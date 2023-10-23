@@ -8,7 +8,7 @@ type Result = {
   average: number;
 };
 
-const calc = (array_input: Array<number>, target: number): Result => {
+export const calc = (array_input: Array<number>, target: number): Result => {
   const average = array_input.reduce((a, b) => a + b, 0) / array_input.length;
   let rating: number;
   let ratingDescription: string;
@@ -57,5 +57,5 @@ try {
   const { input_vals, target } = parseArgumentsBMI(process.argv);
   console.log(calc(input_vals, target));
 } catch (e) {
-  console.log("Error, something bad happened, message: ", e.message);
+  console.log("Error, something bad happened, message");
 }

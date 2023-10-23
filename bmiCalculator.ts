@@ -17,7 +17,7 @@ const parseArguments = (args: string[]): BMIValues => {
   }
 };
 
-const calculateBmi = (weight_kg: number, height_cm: number): string => {
+export const calculateBmi = (weight_kg: number, height_cm: number): string => {
   const bmi = (weight_kg / (height_cm * height_cm)) * 10000;
   if (bmi < 18.5) {
     return "Underweight (unhealthy weight)";
@@ -33,5 +33,5 @@ try {
   const { height_cm, weight_kg } = parseArguments(process.argv);
   console.log(calculateBmi(weight_kg, height_cm));
 } catch (e) {
-  console.log("Error, something bad happened, message: ", e.message);
+  console.log("Error, something bad happened");
 }
