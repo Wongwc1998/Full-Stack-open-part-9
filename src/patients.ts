@@ -42,4 +42,4 @@ const data = [
 ];
 
 
-export default data;
+export let patientsData = data;

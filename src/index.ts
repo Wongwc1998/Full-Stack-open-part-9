@@ -1,10 +1,9 @@
 import express from "express";
 import { calculateBmi } from "./bmiCalculator";
 import { calc } from "./exerciseCalculator";
-import data from "./patients";
+import { patientsData } from "./patients";
 import cors from "cors";
-import { v1 as uuid } from 'uuid'
-const id = uuid()
+import toNewPatient from "./utils";
 
 const app = express();
 app.use(cors());
@@ -32,7 +31,7 @@ app.get("/bmi", (req, res) => {
 
 app.get("/api/patients", (_req, res) => {
   res.send(
-    data.map(({ id, name, dateOfBirth, gender, occupation }) => ({
+    patientsData.map(({ id, name, dateOfBirth, gender, occupation }) => ({
       id,
       name,
       dateOfBirth,
@@ -41,6 +40,17 @@ app.get("/api/patients", (_req, res) => {
     }))
   );
 });
+
+app.post("/api/patients", (req, res) => {
+  try {
+    const newPatient = toNewPatient(req.body);
+    patientsData.push(newPatient); // Add the new patient to the data array
+    res.json(newPatient);
+  } catch (e) {
+    res.status(400).send("Error");
+  }
+});
+
 
 app.get("/api/ping", (_req, res) => {
   res.send("pong");
