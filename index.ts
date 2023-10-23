@@ -1,8 +1,13 @@
 import express from "express";
 import { calculateBmi } from "./bmiCalculator";
 import { calc } from "./exerciseCalculator";
-const app = express();
+import data from "./patients";
+import cors from "cors";
+import { v1 as uuid } from 'uuid'
+const id = uuid()
 
+const app = express();
+app.use(cors());
 app.use(express.json());
 
 app.get("/hello", (_req, res) => {
@@ -52,7 +57,7 @@ app.post("/exercises", (req, res) => {
       error: "malformatted parameters",
     });
   } else {
-    res.send(calc(daily_exercises, Number(target)));
+    res.send(calc(daily_exercises as number[], Number(target)));
   }
 });
 
