@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "tsc": "tsc",
-    "calculateBmi": "ts-node bmiCalculator.ts",
-    "calculateExercises": "ts-node exerciseCalculator.ts",
-    "dev": "ts-node-dev index.ts",
+    "calculateBmi": "ts-node src/bmiCalculator.ts",
+    "calculateExercises": "ts-node src/exerciseCalculator.ts",
+    "dev": "ts-node-dev src/index.ts",
     "lint": "eslint . --ext .ts",
-    "start": "ts-node index.ts"
+    "start": "ts-node src/index.ts"
   },
   "keywords": [],
   "author": "",
