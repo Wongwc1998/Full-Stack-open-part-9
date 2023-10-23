@@ -25,6 +25,18 @@ app.get("/bmi", (req, res) => {
   }
 });
 
+app.get("/api/patients", (_req, res) => {
+  res.send(
+    data.map(({ id, name, dateOfBirth, gender, occupation }) => ({
+      id,
+      name,
+      dateOfBirth,
+      gender,
+      occupation,
+    }))
+  );
+});
+
 app.get("/api/ping", (_req, res) => {
   res.send("pong");
 });
